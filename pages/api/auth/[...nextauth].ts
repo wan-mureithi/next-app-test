@@ -35,4 +35,9 @@ export default NextAuth({
       return token
     },
   },
+  pages: {
+    signIn: '/auth/signin',
+    signOut: '/auth/signout',
+    error:'/auth/error'
+  }
 });
