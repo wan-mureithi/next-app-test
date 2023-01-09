@@ -3,7 +3,6 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 function Login() {
     const { data: session } = useSession();
-    console.log(session)
 
     const handleSignIn = () => {
         console.log('something is happening')

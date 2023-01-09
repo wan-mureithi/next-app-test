@@ -1,7 +1,9 @@
 import React from 'react';
 import { signIn, getProviders } from "next-auth/react"
-import { ProviderInterface } from '../api/auth/types/next-auth';
+import { ProviderInterface } from '../../types/next-auth';
 import styles from '../../styles/Home.module.css'
+import 'devextreme/dist/css/dx.light.css';
+import Button from 'devextreme-react/button';
 
 interface SignInProps {
     providers: ProviderInterface
@@ -13,9 +15,9 @@ const Signin: React.FC<SignInProps> = ({ providers }) => {
     <div className={styles.main}>
       {providers && Object.values(providers).map((provider) => (
         <div className={styles.center} key={provider.name}>
-          <button onClick={() => signIn(provider.id)}>
+          <Button onClick={() => signIn(provider.id)}>
             Sign in with {provider.name}
-          </button>
+          </Button>
         </div>
       ))}
     </div>
