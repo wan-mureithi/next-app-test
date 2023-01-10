@@ -1,6 +1,7 @@
 import React from "react";
 import { useSession, signIn, signOut } from "next-auth/react"
 
+
 function Login() {
     const { data: session } = useSession();
 
@@ -10,6 +11,8 @@ function Login() {
     }
 
     if (session) {
+      console.log(session)
+      localStorage.setItem('idToken', session.accessToken)
         return (
           <>
             Signed in as {session.user?.email} <br />

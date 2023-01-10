@@ -18,10 +18,12 @@ export default NextAuth({
       type: 'oauth',
       version: "2.0",
        profile(profile, tokens) {
+        console.log(tokens)
         return {
           id: profile.sub,
           name: profile.name,
-          email: profile.email
+          email: profile.email,
+          accessToken: tokens.access_token
         }
       },
     }
@@ -34,6 +36,13 @@ export default NextAuth({
       }
       return token
     },
+    async session({ session, token, user }) {
+      if(session?.user){
+        session.accessToken = token.accessToken
+      }
+      
+      return session
+    }
   },
   pages: {
     signIn: '/auth/signin',
